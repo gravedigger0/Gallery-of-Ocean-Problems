@@ -16,16 +16,22 @@ window.onmousemove = e => {
     nextPercent = Math.max(nextPercent, -100);
 
     track.dataset.percent = nextPercent;
-    track.style.transform = `translate(${nextPercent}%, -50%)`
+    
+
+    track.animate({
+        transform: `translate(${nextPercent}%, -50%)`
+    }, { duration: 1200, fill:"forwards" })
 
     const images = track.getElementsByClassName("image")
-    console.log(images)
-
 
     for (let image of images) {
-        image.style.objectPosition = `${nextPercent + 100}% 50%`
-        console.log(image)
+        // image.style.objectPosition = `${nextPercent + 100}% 50%`
+        image.animate({
+            objectPosition: `${nextPercent + 100}% 50%`
+        }, { duration: 1200, fill:"forwards" } )
     }
+
+    
 }
 
 window.onmouseup = () => {
